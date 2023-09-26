@@ -31,7 +31,7 @@ import br.com.projeto.controller.*;
 import javax.swing.Icon;
 
 public class TelaADMView extends JFrame {
-	private JLabel image2, image3, txt1;
+	private JLabel image2, image3;
 	private JPanel p, p2, p3;
 	private Container container;
 	private ImageIcon i1, i2, i3;
@@ -52,7 +52,6 @@ public class TelaADMView extends JFrame {
 		getContentPane().setBackground(new Color(230, 228, 242));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		txt1 = new JLabel("Bem Vindo, ADM");
 		i1 = new ImageIcon("Imagens/Fundo.jpg");
 		i2 = new ImageIcon("Imagens/Fundo1.jpg");
 		i3 = new ImageIcon("Imagens/read.png");
@@ -62,8 +61,6 @@ public class TelaADMView extends JFrame {
 		p2 = new JPanel();
 		p3 = new JPanel();
 		container = getContentPane();
-
-		txt1.setBounds(180, 95, 450, 45);
 		image3.setBounds(95, -60, 390, 320);
 		p.setBounds(90, 200, 500, 350);
 		p2.setBounds(0, 130, 500, 5);
@@ -71,9 +68,6 @@ public class TelaADMView extends JFrame {
 		p.add(image2);
 		//p3.add(image2);
 		p2.setBackground(Color.black);
-		txt1.setFont(fonte3);
-		txt1.setForeground(Color.BLACK);
-		getContentPane().add(txt1);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 128, 64));
@@ -95,12 +89,83 @@ public class TelaADMView extends JFrame {
 		getContentPane().add(lblLogo);
 		
 		JLabel l1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Login.png"));
-		l1.setBounds(424, 270, 234, 213);
+		l1.setBounds(424, 150, 234, 213);
 		getContentPane().add(l1);
 		
 		JLabel l1_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Resumos.png"));
-		l1_1.setBounds(113, 270, 234, 213);
+		l1_1.setBounds(113, 150, 234, 213);
 		getContentPane().add(l1_1);
+		
+		JLabel l1_2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\2919592.png"));
+		l1_2.setBounds(769, 150, 234, 213);
+		getContentPane().add(l1_2);
+		
+		JLabel l1_2_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
+		l1_2_1.setBounds(1107, 150, 234, 213);
+		getContentPane().add(l1_2_1);
+		
+		JLabel lblNewLabel = new JLabel("Resumos");
+		lblNewLabel.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
+		lblNewLabel.setBounds(194, 363, 82, 51);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblUsuriosCadastrados = new JLabel("Usuários Cadastrados");
+		lblUsuriosCadastrados.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
+		lblUsuriosCadastrados.setBounds(455, 373, 191, 51);
+		getContentPane().add(lblUsuriosCadastrados);
+		
+		JLabel lblEditarUsurio = new JLabel("Editar Usuário");
+		lblEditarUsurio.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
+		lblEditarUsurio.setBounds(832, 373, 131, 51);
+		getContentPane().add(lblEditarUsurio);
+		
+		JLabel lblExcluirUsurio = new JLabel("Excluir Usuário");
+		lblExcluirUsurio.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
+		lblExcluirUsurio.setBounds(1166, 373, 131, 51);
+		getContentPane().add(lblExcluirUsurio);
+		
+		JLabel Sair = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\SaídaADM.png"));
+		Sair.setBounds(113, 428, 234, 213);
+		getContentPane().add(Sair);
+		
+		Sair.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		JLabel lblSair = new JLabel("Sair");
+		lblSair.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
+		lblSair.setBounds(238, 653, 38, 51);
+		getContentPane().add(lblSair);
 		setVisible(true);
 		
 		l1_1.addMouseListener(new MouseListener() {
@@ -154,6 +219,4 @@ public class TelaADMView extends JFrame {
 	public void mensagemErro(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem, "Remoção não realizada", JOptionPane.WARNING_MESSAGE);
 	}
-
-	
 }

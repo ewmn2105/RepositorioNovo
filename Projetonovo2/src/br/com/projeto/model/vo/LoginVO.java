@@ -1,10 +1,17 @@
 package br.com.projeto.model.vo;
 
 	public class LoginVO {
-		String nome, senha;
-		public void Logar (String nome, String senha) {
+		String nome, senha, email;
+		public void Logar (String nome, String senha, String email) {
 			this.nome = nome;
 			this.senha = senha;
+			this.email = email;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
 		}
 		public String getNome() {
 			return nome;
