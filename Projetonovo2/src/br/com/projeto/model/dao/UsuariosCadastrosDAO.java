@@ -18,17 +18,15 @@ public class UsuariosCadastrosDAO {
 		List<LoginVO> usuarios = new ArrayList<>();
 		 try {
 	    	 Connection conexao = DriverManager.getConnection(url, "root", "root");
-	    	 String sql = "SELECT nome, senha, emailAutor  FROM Usuarios";
+	    	 String sql = "SELECT nome, email FROM Usuarios";
     		 PreparedStatement statement = conexao.prepareStatement(sql);
     		 ResultSet resultado = statement.executeQuery();
     		 while(resultado.next()) {
     			 String coluna1 = resultado.getString("nome");
-    			 String coluna2 = resultado.getString("senha");
-    			 String coluna3 = resultado.getString("emailAutor");
+    			 String coluna2 = resultado.getString("email");
     			 LoginVO lgvo = new LoginVO();
     			 lgvo.setNome(coluna1);
-    			 lgvo.setSenha(coluna2);
-    			 lgvo.setEmail(coluna3);
+    			 lgvo.setEmail(coluna2);
     			 usuarios.add(lgvo);
     		 }
 	    } catch (SQLException slcte) {

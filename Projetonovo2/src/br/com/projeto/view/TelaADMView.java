@@ -109,10 +109,51 @@ public class TelaADMView extends JFrame {
 		lblNewLabel.setBounds(194, 363, 82, 51);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblUsuriosCadastrados = new JLabel("Usuários Cadastrados");
-		lblUsuriosCadastrados.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
-		lblUsuriosCadastrados.setBounds(455, 373, 191, 51);
-		getContentPane().add(lblUsuriosCadastrados);
+		JLabel lblUsuariosCadastrados = new JLabel("Usuários Cadastrados");
+		lblUsuariosCadastrados.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
+		lblUsuariosCadastrados.setBounds(455, 373, 191, 51);
+		getContentPane().add(lblUsuariosCadastrados);
+		
+		l1.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					UsuariosCadastrosView view = new UsuariosCadastrosView();
+					String url = "jdbc:mysql://localhost:3306/BD";
+					Connection conexao = DriverManager.getConnection(url, "root", "root");
+                    UsuariosCadastrosController controle = new UsuariosCadastrosController(view, conexao);
+					view.setVisible(true);
+					view.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					}catch(SQLException sqle) {}
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel lblEditarUsurio = new JLabel("Editar Usuário");
 		lblEditarUsurio.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
