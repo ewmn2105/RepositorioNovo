@@ -96,14 +96,6 @@ public class TelaADMView extends JFrame {
 		l1_1.setBounds(113, 150, 234, 213);
 		getContentPane().add(l1_1);
 		
-		JLabel l1_2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\2919592.png"));
-		l1_2.setBounds(769, 150, 234, 213);
-		getContentPane().add(l1_2);
-		
-		JLabel l1_2_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
-		l1_2_1.setBounds(1107, 150, 234, 213);
-		getContentPane().add(l1_2_1);
-		
 		JLabel lblNewLabel = new JLabel("Resumos");
 		lblNewLabel.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
 		lblNewLabel.setBounds(194, 363, 82, 51);
@@ -155,18 +147,8 @@ public class TelaADMView extends JFrame {
 			
 		});
 		
-		JLabel lblEditarUsurio = new JLabel("Editar Usuário");
-		lblEditarUsurio.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
-		lblEditarUsurio.setBounds(832, 373, 131, 51);
-		getContentPane().add(lblEditarUsurio);
-		
-		JLabel lblExcluirUsurio = new JLabel("Excluir Usuário");
-		lblExcluirUsurio.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
-		lblExcluirUsurio.setBounds(1166, 373, 131, 51);
-		getContentPane().add(lblExcluirUsurio);
-		
 		JLabel Sair = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\SaídaADM.png"));
-		Sair.setBounds(113, 428, 234, 213);
+		Sair.setBounds(735, 150, 234, 213);
 		getContentPane().add(Sair);
 		
 		Sair.addMouseListener(new MouseListener() {
@@ -205,7 +187,7 @@ public class TelaADMView extends JFrame {
 		
 		JLabel lblSair = new JLabel("Sair");
 		lblSair.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
-		lblSair.setBounds(238, 653, 38, 51);
+		lblSair.setBounds(860, 375, 38, 51);
 		getContentPane().add(lblSair);
 		setVisible(true);
 		

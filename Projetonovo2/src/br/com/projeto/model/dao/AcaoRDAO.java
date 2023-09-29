@@ -36,4 +36,30 @@ public class AcaoRDAO {
 	    }
 		 return resumos;
 	}
+	
+	public List<GenerosVO> buscarGenerosEmail(String email) {
+		List<GenerosVO> resumos = new ArrayList<>();
+		 try {
+	    	 Connection conexao = DriverManager.getConnection(url, "root", "root");
+	    	 String sql = "SELECT emailAutor, Título, TextoUsuario, Classificação_resumo FROM Resumos WHERE emailAutor = ?";
+    		 PreparedStatement statement = conexao.prepareStatement(sql);
+    		 statement.setString(1, email);
+    		 ResultSet resultado = statement.executeQuery();
+    		 while(resultado.next()) {
+    			 String coluna1 = resultado.getString("emailAutor");
+    			 String coluna2 = resultado.getString("Título");
+    			 String coluna3 = resultado.getString("TextoUsuario");
+    			 String coluna4 = resultado.getString("Classificação_resumo");
+    			 GenerosVO gvo = new GenerosVO();
+    			 gvo.setId(coluna1);
+    			 gvo.setAutor(coluna2);
+    			 gvo.setTitulo(coluna3);
+    			 gvo.setClassificao(coluna4);
+    			 resumos.add(gvo);
+    		 }
+	    } catch (SQLException slcte) {
+	        return null;
+	    }
+		 return resumos;
+	}
 }

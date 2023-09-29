@@ -98,7 +98,7 @@ public class TelaRAcaoView extends JFrame {
 		txt1.setBounds(740, 537, 125, 20);
 		p.setBounds(575, 250, 390, 315);
 		sair.setBounds(1400, 0, 130, 113);
-		pesquisa.setBounds(152, 328, 100, 102);
+		pesquisa.setBounds(288, 190, 100, 102);
 		livro1.setBounds(152, 0, 100, 102);
 		p.add(image2);
 		
@@ -122,7 +122,7 @@ public class TelaRAcaoView extends JFrame {
 					exibir(Email, Título, Resumo, Classificação);
 				}
 				
-			};            
+			}          
 			public void exibir(String Email, String Título, String Resumo, String Classificação) {
 				final JFrame frame = new JFrame("Visualização");
 				frame.getContentPane().setBackground(new Color(230, 228, 242));
@@ -238,7 +238,7 @@ public class TelaRAcaoView extends JFrame {
 		txtAutor.setText("Autor (Seu e-mail)");
 		txtAutor.setForeground(Color.LIGHT_GRAY);
 		txtAutor.setColumns(10);
-		txtAutor.setBounds(60, 215, 270, 50);
+		txtAutor.setBounds(53, 215, 238, 50);
 		getContentPane().add(txtAutor);
 
 		JLabel lblInformeONome = new JLabel("Informe o nome do autor (Login)");
@@ -253,9 +253,14 @@ public class TelaRAcaoView extends JFrame {
 		
 		pesquisa.setToolTipText("Pesquisar Resumo");
 		
-		l1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\LogoJO.png"));
-		l1.setBounds(87, 507, 234, 213);
+		l1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\loupe-et-icone-de-recherche-de-c.png"));
+		l1.setBounds(298, 290, 90, 90);
 		getContentPane().add(l1);
+		
+		JLabel lblPesquisaGeral = new JLabel("Pesquisa geral");
+		lblPesquisaGeral.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
+		lblPesquisaGeral.setBounds(168, 316, 123, 36);
+		getContentPane().add(lblPesquisaGeral);
 		txtAutor.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent g) {
 				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
@@ -324,6 +329,9 @@ public class TelaRAcaoView extends JFrame {
 	}
 	public void addBtnPegaTxt(MouseListener listener) {
 		pesquisa.addMouseListener(listener);
+	}
+	public void addBtnPegaTxtGeral(MouseListener listener) {
+		l1.addMouseListener(listener);
 	}
 
 	public void mensagem(String mensagem) {

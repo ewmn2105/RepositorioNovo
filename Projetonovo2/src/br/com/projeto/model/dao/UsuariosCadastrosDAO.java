@@ -18,15 +18,40 @@ public class UsuariosCadastrosDAO {
 		List<LoginVO> usuarios = new ArrayList<>();
 		 try {
 	    	 Connection conexao = DriverManager.getConnection(url, "root", "root");
-	    	 String sql = "SELECT nome, email FROM Usuarios";
+	    	 String sql = "SELECT nome, senha, email FROM Usuarios";
     		 PreparedStatement statement = conexao.prepareStatement(sql);
     		 ResultSet resultado = statement.executeQuery();
     		 while(resultado.next()) {
     			 String coluna1 = resultado.getString("nome");
-    			 String coluna2 = resultado.getString("email");
+    			 String coluna2 = resultado.getString("senha");
+    			 String coluna3 = resultado.getString("email");
     			 LoginVO lgvo = new LoginVO();
     			 lgvo.setNome(coluna1);
-    			 lgvo.setEmail(coluna2);
+    			 lgvo.setSenha(coluna2);
+    			 lgvo.setEmail(coluna3);
+    			 usuarios.add(lgvo);
+    		 }
+	    } catch (SQLException slcte) {
+	        return null;
+	    }
+		 return usuarios;
+	}
+	public List<LoginVO> buscaUsuariosEmail(String email) {
+		List<LoginVO> usuarios = new ArrayList<>();
+		 try {
+	    	 Connection conexao = DriverManager.getConnection(url, "root", "root");
+	    	 String sql = "SELECT nome, senha, email FROM Usuarios WHERE email = ?";
+    		 PreparedStatement statement = conexao.prepareStatement(sql);
+    		 statement.setString(1, email);
+    		 ResultSet resultado = statement.executeQuery();
+    		 while(resultado.next()) {
+    			 String coluna1 = resultado.getString("nome");
+    			 String coluna2 = resultado.getString("senha");
+    			 String coluna3 = resultado.getString("email");
+    			 LoginVO lgvo = new LoginVO();
+    			 lgvo.setNome(coluna1);
+    			 lgvo.setSenha(coluna2);
+    			 lgvo.setEmail(coluna3);
     			 usuarios.add(lgvo);
     		 }
 	    } catch (SQLException slcte) {

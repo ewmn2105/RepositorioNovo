@@ -45,6 +45,7 @@ import br.com.projeto.model.dao.UsuariosCadastrosDAO;
 			this.view = view;
 			this.userDAO = new UsuariosCadastrosDAO();
 			view.addBtnPegaTxt(new listener());
+			view.addBtnPegaTxt2(new listener2());
 		}
 
 		class listener implements MouseListener {
@@ -52,6 +53,38 @@ import br.com.projeto.model.dao.UsuariosCadastrosDAO;
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				List<LoginVO> usuarios = userDAO.buscaUsuarios();
+				view.tabela(usuarios);
+			}		
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		}
+		class listener2 implements MouseListener {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String email = view.getAutor();
+				List<LoginVO> usuarios = userDAO.buscaUsuariosEmail(email);
 				view.tabela(usuarios);
 			}		
 			@Override

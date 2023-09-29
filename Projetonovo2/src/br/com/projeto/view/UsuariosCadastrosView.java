@@ -33,13 +33,13 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import br.com.projeto.model.vo.GenerosVO;
 import br.com.projeto.model.vo.LoginVO;
-
+import br.com.projeto.controller.ExclusaoADMVController;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
 public class UsuariosCadastrosView extends JFrame {
 
-	private JLabel image2, image3, txt1, sair, livro1, pesquisa;
+	private JLabel image2, image3, txt1, sair, livro1, pesquisa, pesquisa2;
 	private JPanel p, p1, p2;
 	private JButton b, btnSalvar, btnLer, btnLimpar, btnTxt1;
 	private Container container;
@@ -54,6 +54,8 @@ public class UsuariosCadastrosView extends JFrame {
 	private JLabel l1;
 	private DefaultTableModel tableModel;
 	private JTable table;
+	private JTextField txtAutor;
+	private JLabel exclusao;
 
 	public UsuariosCadastrosView() {
 		inicializaComponentes();
@@ -86,6 +88,7 @@ public class UsuariosCadastrosView extends JFrame {
 		search = new ImageIcon("Imagens/Lupa.png");
 		sair = new JLabel(i);
 		pesquisa = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo\\Imagens\\Lupa.png"));
+		pesquisa2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Lupa.png"));
 		image2 = new JLabel(i2);
 		livro1 = new JLabel(book1);
 		image3 = new JLabel(i3);
@@ -99,22 +102,149 @@ public class UsuariosCadastrosView extends JFrame {
 		sair.setBounds(1400, 0, 130, 113);
 		pesquisa.setBounds(1302, 367, 100, 102);
 		livro1.setBounds(152, 0, 100, 102);
+		pesquisa2.setToolTipText("Pesquisar Resumo");
+		pesquisa2.setBounds(152, 239, 100, 102);
 		p.add(image2);
 		
 		table = new JTable();
-		tableModel = new DefaultTableModel(new Object[] {"Nome", "E-mail"}, 0);
+		tableModel = new DefaultTableModel(new Object[] {"Nome", "Senha", "E-mail"}, 0);
 		table.setModel(tableModel);
 		table.setBounds(538, 221, 558, 433);
 		table.setBackground(new Color(230, 228, 242));
 		table.setFont(new Font("Segoe UI Variable", Font.BOLD, 12));
 		pane.setViewportView(table);
+		
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount()==1) {
+					try {
+					int linha = table.getSelectedRow();
+					String Nome = (String) table.getValueAt(linha, 0);
+					String Senha = (String) table.getValueAt(linha, 1);
+					String Email = (String) table.getValueAt(linha, 2);
+					TelaAcaodeADMView view = new TelaAcaodeADMView(Nome, Senha, Email);
+					String url = "jdbc:mysql://localhost:3306/BD";
+					Connection conexao = DriverManager.getConnection (url, "root", "root");
+					ExclusaoADMVController control = new ExclusaoADMVController(view, conexao);
+					view.setVisible(true);
+					}catch(SQLException sqle) {}
+				}
 				
+			}   
+			public void exibir(String nome, String senha, String email) {
+				JFrame frame = new JFrame("Visualização");
+				frame.getContentPane().setBackground(new Color(230, 228, 242));
+				frame.setBounds(487, 185, 744, 571);
+				frame.getContentPane().setLayout(null);
+				
+				JScrollPane pane1 = new JScrollPane((Component) null);
+				pane1.setBounds(206, 194, 296, 49);
+				frame.getContentPane().add(pane1);
+				
+				JTextArea textArea = new JTextArea();
+				textArea.setText(email);
+				textArea.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
+				pane1.setViewportView(textArea);
+				
+				JLabel sair2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Sair.png"));
+				sair2.setBounds(590, 8, 130, 113);
+				frame.getContentPane().add(sair2);
+				
+				JPanel panel_1 = new JPanel();
+				panel_1.setBackground(new Color(255, 128, 64));
+				panel_1.setBounds(0, 131, 1540, 2);
+				frame.getContentPane().add(panel_1);
+				
+				JScrollPane pane1_1 = new JScrollPane((Component) null);
+				pane1_1.setBounds(206, 289, 296, 49);
+				frame.getContentPane().add(pane1_1);
+				
+				JTextArea textArea_1 = new JTextArea();
+				textArea_1.setText(nome);
+				textArea_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
+				pane1_1.setViewportView(textArea_1);
+				
+				JScrollPane pane1_1_1 = new JScrollPane((Component) null);
+				pane1_1_1.setBounds(206, 383, 296, 49);
+				frame.getContentPane().add(pane1_1_1);
+				
+				JTextArea textArea_1_1 = new JTextArea();
+				textArea_1_1.setText(senha);
+				textArea_1_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
+				pane1_1_1.setViewportView(textArea_1_1);
+				
+				JLabel edição = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\novopencil.png"));
+				edição.setToolTipText("Pesquisar Resumo");
+				edição.setBounds(565, 197, 100, 102);
+				frame.getContentPane().add(edição);
+				
+				exclusao = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
+				exclusao.setToolTipText("Pesquisar Resumo");
+				exclusao.setBounds(565, 310, 100, 102);
+				frame.getContentPane().add(exclusao);
+				
+				
+				
+				JLabel lblNewLabel = new JLabel("E-mail");
+				lblNewLabel.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
+				lblNewLabel.setBounds(332, 171, 54, 21);
+				frame.getContentPane().add(lblNewLabel);
+				
+				JLabel lblNome = new JLabel("Nome");
+				lblNome.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
+				lblNome.setBounds(332, 266, 54, 13);
+				frame.getContentPane().add(lblNome);
+				
+				JLabel lblSenha = new JLabel("Senha");
+				lblSenha.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
+				lblSenha.setBounds(332, 360, 54, 13);
+				frame.getContentPane().add(lblSenha);
+				
+				frame.setVisible(true);
+				
+				
+				sair2.addMouseListener(new MouseListener() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						
+
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void mouseReleased(MouseEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+				
+			}
+			
+		});
 		btnLogin.setBackground(Color.BLUE);
 		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setFont(fonte);
 		senha.setFont(fonte1);
 		getContentPane().add(sair);
 		getContentPane().add(pesquisa);
+		getContentPane().add(pesquisa2);		
 		getContentPane().add(livro1);
 		getContentPane().add(pane);
 
@@ -138,6 +268,32 @@ public class UsuariosCadastrosView extends JFrame {
 		l1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\LogoJO.png"));
 		l1.setBounds(87, 355, 234, 213);
 		getContentPane().add(l1);
+		
+		txtAutor = new JTextField();
+		txtAutor.setText("Autor (Seu e-mail)");
+		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
+		txtAutor.setForeground(Color.LIGHT_GRAY);
+		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
+		txtAutor.setColumns(10);
+		txtAutor.setBounds(83, 167, 238, 50);
+		getContentPane().add(txtAutor);
+		
+		txtAutor.addFocusListener(new FocusListener() {
+			public void focusGained(FocusEvent g) {
+				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
+					txtAutor.setText("");
+					txtAutor.setForeground(Color.black);
+				}
+
+			}
+
+			public void focusLost(FocusEvent e) {
+				if (txtAutor.getText().isEmpty()) {
+					txtAutor.setText("Autor (Seu e-mail)");
+					txtAutor.setForeground(Color.LIGHT_GRAY);
+				}
+			}
+		});
 
 		sair.addMouseListener(new MouseListener() {
 			@Override
@@ -181,14 +337,20 @@ public class UsuariosCadastrosView extends JFrame {
 	public void tabela(List<LoginVO> usuario) {
 		tableModel.setRowCount(0);
 		for(LoginVO usuarios: usuario) {
-			tableModel.addRow(new Object[] {usuarios.getNome(), usuarios.getEmail()});
+			tableModel.addRow(new Object[] {usuarios.getNome(), usuarios.getSenha(), usuarios.getEmail()});
 		}
+	}
+	public String getAutor() {
+		return txtAutor.getText();
 	}
 
 	public void addBtnPegaTxt(MouseListener listener) {
 		pesquisa.addMouseListener(listener);
 	}
-
+	public void addBtnPegaTxt2(MouseListener listener) {
+		pesquisa2.addMouseListener(listener);
+	}
+	
 	public void mensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);
 	}

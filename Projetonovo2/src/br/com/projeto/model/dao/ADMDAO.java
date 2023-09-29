@@ -23,4 +23,16 @@ public class ADMDAO {
 	            return false;
 	        }
 	}
+	public boolean removecad2 (ADMVO removeLogin) {
+		try {
+			Connection conexao = DriverManager.getConnection (url, "root", "root");
+			String sql = "DELETE FROM Resumos WHERE emailAutor = ?";
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setString(1, removeLogin.getEmail());
+			int rowsAffected = statement.executeUpdate();
+	            return rowsAffected > 0;
+	        } catch (SQLException e) {
+	            return false;
+	        }
+	}
 }

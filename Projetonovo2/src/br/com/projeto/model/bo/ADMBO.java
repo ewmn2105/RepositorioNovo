@@ -13,5 +13,8 @@ public class ADMBO{
 	public boolean removeLogin (ADMVO removelogin) {
 		return admDAO.removecad(removelogin);
 	}
+	public boolean removeLogin2 (ADMVO removelogin2) {
+		return admDAO.removecad2(removelogin2);
+	}
 }
 

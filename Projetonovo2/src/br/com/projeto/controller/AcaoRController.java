@@ -31,7 +31,8 @@ public class AcaoRController {
 	public AcaoRController(TelaRAcaoView view, Connection conexao) {
 		this.view = view;
 		this.acrDAO = new AcaoRDAO();
-		view.addBtnPegaTxt(new listener());
+		view.addBtnPegaTxtGeral(new listener());
+		view.addBtnPegaTxt(new listener2());
 	}
 
 	class listener implements MouseListener {
@@ -39,6 +40,38 @@ public class AcaoRController {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			List<GenerosVO> generos = acrDAO.buscarGeneros();
+			view.tabela(generos);
+		}		
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	class listener2 implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			String email = view.getAutor();
+			List<GenerosVO> generos = acrDAO.buscarGenerosEmail(email);
 			view.tabela(generos);
 		}		
 		@Override
