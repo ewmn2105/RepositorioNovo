@@ -12,6 +12,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.projeto.controller.GenerosController.listener;
@@ -31,71 +33,33 @@ public class AcaoRController {
 	public AcaoRController(TelaRAcaoView view, Connection conexao) {
 		this.view = view;
 		this.acrDAO = new AcaoRDAO();
-		view.addBtnPegaTxtGeral(new listener());
-		view.addBtnPegaTxt(new listener2());
+		view.addtxtAutor(new listener3());
 	}
+		class listener3 implements DocumentListener{
 
-	class listener implements MouseListener {
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				String email = view.getAutor();
+				List<GenerosVO> generos = acrDAO.buscarGenerosEmail(email);
+				view.tabela(generos);
+				
+			}
 
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			List<GenerosVO> generos = acrDAO.buscarGeneros();
-			view.tabela(generos);
-		}		
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				String email = view.getAutor();
+				List<GenerosVO> generos = acrDAO.buscarGenerosEmail(email);
+				view.tabela(generos);
+				
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				String email = view.getAutor();
+				List<GenerosVO> generos = acrDAO.buscarGenerosEmail(email);
+				view.tabela(generos);
+				
+			}
 			
 		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-	}
-	class listener2 implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			String email = view.getAutor();
-			List<GenerosVO> generos = acrDAO.buscarGenerosEmail(email);
-			view.tabela(generos);
-		}		
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-	}
 }

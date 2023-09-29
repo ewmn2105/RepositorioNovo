@@ -40,9 +40,9 @@ public class UsuariosCadastrosDAO {
 		List<LoginVO> usuarios = new ArrayList<>();
 		 try {
 	    	 Connection conexao = DriverManager.getConnection(url, "root", "root");
-	    	 String sql = "SELECT nome, senha, email FROM Usuarios WHERE email = ?";
+	    	 String sql = "SELECT nome, senha, email FROM Usuarios WHERE email LIKE ?";
     		 PreparedStatement statement = conexao.prepareStatement(sql);
-    		 statement.setString(1, email);
+    		 statement.setString(1, email+"%");
     		 ResultSet resultado = statement.executeQuery();
     		 while(resultado.next()) {
     			 String coluna1 = resultado.getString("nome");

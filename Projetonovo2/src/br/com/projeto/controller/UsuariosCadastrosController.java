@@ -12,9 +12,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
-import br.com.projeto.controller.AcaoRController.listener;
 import br.com.projeto.controller.LembrarSenhaController.lembraListener;
 import br.com.projeto.model.bo.ADMBO;
 import br.com.projeto.model.bo.CadastroBO;
@@ -44,71 +45,35 @@ import br.com.projeto.model.dao.UsuariosCadastrosDAO;
 		public UsuariosCadastrosController (UsuariosCadastrosView view, Connection conexao) {
 			this.view = view;
 			this.userDAO = new UsuariosCadastrosDAO();
-			view.addBtnPegaTxt(new listener());
-			view.addBtnPegaTxt2(new listener2());
+			view.addTxtListener(new listener3());
 		}
-
-		class listener implements MouseListener {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				List<LoginVO> usuarios = userDAO.buscaUsuarios();
-				view.tabela(usuarios);
-			}		
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+		
+		class listener3 implements DocumentListener {
 
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		}
-		class listener2 implements MouseListener {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void insertUpdate(DocumentEvent e) {
 				String email = view.getAutor();
 				List<LoginVO> usuarios = userDAO.buscaUsuariosEmail(email);
 				view.tabela(usuarios);
-			}		
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void removeUpdate(DocumentEvent e) {
+				String email = view.getAutor();
+				List<LoginVO> usuarios = userDAO.buscaUsuariosEmail(email);
+				view.tabela(usuarios);
+
 			}
 
 			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
+			public void changedUpdate(DocumentEvent e) {
+				String email = view.getAutor();
+				List<LoginVO> usuarios = userDAO.buscaUsuariosEmail(email);
+				view.tabela(usuarios);
 				
 			}
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+		
 		}
 	}

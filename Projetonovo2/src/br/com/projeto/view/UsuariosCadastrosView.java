@@ -31,6 +31,9 @@ import javax.swing.JTextField;
 import javax.swing.Icon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import br.com.projeto.model.vo.GenerosVO;
 import br.com.projeto.model.vo.LoginVO;
 import br.com.projeto.controller.ExclusaoADMVController;
@@ -39,7 +42,7 @@ import javax.swing.JTable;
 
 public class UsuariosCadastrosView extends JFrame {
 
-	private JLabel image2, image3, txt1, sair, livro1, pesquisa, pesquisa2;
+	private JLabel image2, image3, txt1, sair, livro1;
 	private JPanel p, p1, p2;
 	private JButton b, btnSalvar, btnLer, btnLimpar, btnTxt1;
 	private Container container;
@@ -87,8 +90,6 @@ public class UsuariosCadastrosView extends JFrame {
 		i3 = new ImageIcon("Imagens/read.png");
 		search = new ImageIcon("Imagens/Lupa.png");
 		sair = new JLabel(i);
-		pesquisa = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo\\Imagens\\Lupa.png"));
-		pesquisa2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Lupa.png"));
 		image2 = new JLabel(i2);
 		livro1 = new JLabel(book1);
 		image3 = new JLabel(i3);
@@ -100,10 +101,7 @@ public class UsuariosCadastrosView extends JFrame {
 		txt1.setBounds(740, 537, 125, 20);
 		p.setBounds(575, 250, 390, 315);
 		sair.setBounds(1400, 0, 130, 113);
-		pesquisa.setBounds(1302, 367, 100, 102);
 		livro1.setBounds(152, 0, 100, 102);
-		pesquisa2.setToolTipText("Pesquisar Resumo");
-		pesquisa2.setBounds(152, 239, 100, 102);
 		p.add(image2);
 		
 		table = new JTable();
@@ -243,8 +241,6 @@ public class UsuariosCadastrosView extends JFrame {
 		btnLogin.setFont(fonte);
 		senha.setFont(fonte1);
 		getContentPane().add(sair);
-		getContentPane().add(pesquisa);
-		getContentPane().add(pesquisa2);		
 		getContentPane().add(livro1);
 		getContentPane().add(pane);
 
@@ -263,22 +259,24 @@ public class UsuariosCadastrosView extends JFrame {
 		lblNewLabel_1.setBounds(430, 10, 519, 90);
 		getContentPane().add(lblNewLabel_1);
 		
-		pesquisa.setToolTipText("Pesquisar Resumo");
-		
 		l1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\LogoJO.png"));
-		l1.setBounds(87, 355, 234, 213);
+		l1.setBounds(87, 294, 234, 213);
 		getContentPane().add(l1);
 		
 		txtAutor = new JTextField();
-		txtAutor.setText("Autor (Seu e-mail)");
+		//txtAutor.setText("Autor (Seu e-mail)");
 		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
 		txtAutor.setForeground(Color.LIGHT_GRAY);
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
-		txtAutor.setBounds(83, 167, 238, 50);
+		txtAutor.setBounds(609, 142, 238, 50);
 		getContentPane().add(txtAutor);
 		
-		txtAutor.addFocusListener(new FocusListener() {
+		JLabel l1_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\loupe-et-icone-de-recherche-de-c.png"));
+		l1_1.setBounds(509, 122, 90, 90);
+		getContentPane().add(l1_1);
+		
+		/*txtAutor.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent g) {
 				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
 					txtAutor.setText("");
@@ -293,7 +291,7 @@ public class UsuariosCadastrosView extends JFrame {
 					txtAutor.setForeground(Color.LIGHT_GRAY);
 				}
 			}
-		});
+		});*/
 
 		sair.addMouseListener(new MouseListener() {
 			@Override
@@ -326,9 +324,7 @@ public class UsuariosCadastrosView extends JFrame {
 
 			}
 		});
-		setVisible(true);
-	}
-	
+		}
 
 	public DefaultTableModel getTexto() {
 		return tableModel;
@@ -343,12 +339,9 @@ public class UsuariosCadastrosView extends JFrame {
 	public String getAutor() {
 		return txtAutor.getText();
 	}
-
-	public void addBtnPegaTxt(MouseListener listener) {
-		pesquisa.addMouseListener(listener);
-	}
-	public void addBtnPegaTxt2(MouseListener listener) {
-		pesquisa2.addMouseListener(listener);
+	
+	public void addTxtListener(DocumentListener listener) {
+		txtAutor.getDocument().addDocumentListener(listener);
 	}
 	
 	public void mensagem(String mensagem) {

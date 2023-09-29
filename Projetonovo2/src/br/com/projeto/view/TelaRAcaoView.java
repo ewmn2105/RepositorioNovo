@@ -31,13 +31,15 @@ import javax.swing.JTextField;
 import javax.swing.Icon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.event.DocumentListener;
+
 import br.com.projeto.model.vo.GenerosVO;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
 public class TelaRAcaoView extends JFrame {
 
-	private JLabel image2, image3, txt1, sair, livro1, pesquisa;
+	private JLabel image2, image3, txt1, sair, livro1;
 	private JPanel p, p1, p2;
 	private JButton b, btnSalvar, btnLer, btnLimpar, btnTxt1;
 	private Container container;
@@ -84,9 +86,6 @@ public class TelaRAcaoView extends JFrame {
 		i3 = new ImageIcon("Imagens/read.png");
 		search = new ImageIcon("Imagens/Lupa.png");
 		sair = new JLabel(i);
-		// livro1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de
-		// Trabalho\\MVC\\Projetonovo\\Imagens\\livro1.png"));
-		pesquisa = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo\\Imagens\\Lupa.png"));
 		image2 = new JLabel(i2);
 		livro1 = new JLabel(book1);
 		image3 = new JLabel(i3);
@@ -98,7 +97,6 @@ public class TelaRAcaoView extends JFrame {
 		txt1.setBounds(740, 537, 125, 20);
 		p.setBounds(575, 250, 390, 315);
 		sair.setBounds(1400, 0, 130, 113);
-		pesquisa.setBounds(288, 190, 100, 102);
 		livro1.setBounds(152, 0, 100, 102);
 		p.add(image2);
 		
@@ -218,7 +216,6 @@ public class TelaRAcaoView extends JFrame {
 		btnLogin.setFont(fonte);
 		senha.setFont(fonte1);
 		getContentPane().add(sair);
-		getContentPane().add(pesquisa);
 		getContentPane().add(livro1);
 		getContentPane().add(pane);
 
@@ -233,34 +230,44 @@ public class TelaRAcaoView extends JFrame {
 		getContentPane().add(panel_1);
 
 		txtAutor = new JTextField();
-		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
-		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setText("Autor (Seu e-mail)");
+		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
 		txtAutor.setForeground(Color.LIGHT_GRAY);
+		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
-		txtAutor.setBounds(53, 215, 238, 50);
+		txtAutor.setBounds(600, 140, 238, 50);
 		getContentPane().add(txtAutor);
+		
+		txtAutor.addFocusListener(new FocusListener() {
+			public void focusGained(FocusEvent g) {
+				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
+					txtAutor.setText("");
+					txtAutor.setForeground(Color.black);
+				}
 
-		JLabel lblInformeONome = new JLabel("Informe o nome do autor (Login)");
-		lblInformeONome.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
-		lblInformeONome.setBounds(60, 161, 270, 23);
-		getContentPane().add(lblInformeONome);
+			}
+
+			public void focusLost(FocusEvent e) {
+				if (txtAutor.getText().isEmpty()) {
+					txtAutor.setText("Autor (Seu e-mail)");
+					txtAutor.setForeground(Color.LIGHT_GRAY);
+				}
+			}
+		});
+
 
 		JLabel lblNewLabel_1 = new JLabel("Leia os seus resumos:");
 		lblNewLabel_1.setFont(new Font("Segoe UI Variable", Font.PLAIN, 27));
 		lblNewLabel_1.setBounds(430, 10, 519, 90);
 		getContentPane().add(lblNewLabel_1);
 		
-		pesquisa.setToolTipText("Pesquisar Resumo");
-		
 		l1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\loupe-et-icone-de-recherche-de-c.png"));
-		l1.setBounds(298, 290, 90, 90);
+		l1.setBounds(509, 122, 90, 90);
 		getContentPane().add(l1);
 		
-		JLabel lblPesquisaGeral = new JLabel("Pesquisa geral");
-		lblPesquisaGeral.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
-		lblPesquisaGeral.setBounds(168, 316, 123, 36);
-		getContentPane().add(lblPesquisaGeral);
+		JLabel l1_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\LogoJO.png"));
+		l1_1.setBounds(102, 267, 234, 213);
+		getContentPane().add(l1_1);
 		txtAutor.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent g) {
 				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
@@ -327,11 +334,12 @@ public class TelaRAcaoView extends JFrame {
 	public String getAutor() {
 		return txtAutor.getText();
 	}
-	public void addBtnPegaTxt(MouseListener listener) {
-		pesquisa.addMouseListener(listener);
-	}
 	public void addBtnPegaTxtGeral(MouseListener listener) {
 		l1.addMouseListener(listener);
+	}
+	
+	public void addtxtAutor (DocumentListener listener) {
+		txtAutor.getDocument().addDocumentListener(listener);
 	}
 
 	public void mensagem(String mensagem) {
