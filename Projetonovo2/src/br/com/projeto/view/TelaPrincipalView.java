@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.*;
 import java.awt.Component;
@@ -21,7 +22,8 @@ import br.com.projeto.controller.TerrorController;
 import br.com.projeto.controller.FiccaoController;
 import br.com.projeto.controller.RomanceController;
 import br.com.projeto.controller.AcaoRController;
-
+import br.com.projeto.model.dao.AcaoRDAO;
+import br.com.projeto.model.vo.*;
 public class TelaPrincipalView extends JFrame {
 	private String nome;
 	private ImageIcon i1, i2, i3, i4, logo, manual1, Con1, sair1, inf;
@@ -340,6 +342,9 @@ public class TelaPrincipalView extends JFrame {
 					String url = "jdbc:mysql://localhost:3306/BD";
 					Connection conexao = DriverManager.getConnection(url, "root", "root");
 					AcaoRController controle = new AcaoRController(view, conexao);
+					AcaoRDAO acrDAO = new AcaoRDAO();
+					List<GenerosVO> buscaResumo = acrDAO.buscarGeneros();
+					view.tabela(buscaResumo);
 					view.setVisible(true);
 					view.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					}catch(SQLException sqle) {}

@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,9 +27,12 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.projeto.model.bo.LoginBO;
+import br.com.projeto.model.dao.AcaoRDAO;
+import br.com.projeto.model.vo.GenerosVO;
 import br.com.projeto.model.vo.LoginVO;
 import br.com.projeto.controller.*;
 import javax.swing.Icon;
+import br.com.projeto.model.dao.UsuariosCadastrosDAO;
 
 public class TelaADMView extends JFrame {
 	private JLabel image2, image3;
@@ -110,15 +114,17 @@ public class TelaADMView extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				try {
-					UsuariosCadastrosView view = new UsuariosCadastrosView();
-					String url = "jdbc:mysql://localhost:3306/BD";
-					Connection conexao = DriverManager.getConnection(url, "root", "root");
-                    UsuariosCadastrosController controle = new UsuariosCadastrosController(view, conexao);
-					view.setVisible(true);
-					view.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					}catch(SQLException sqle) {}
-				
+					try {
+						UsuariosCadastrosView view = new UsuariosCadastrosView();
+						String url = "jdbc:mysql://localhost:3306/BD";
+						Connection conexao = DriverManager.getConnection(url, "root", "root");
+						UsuariosCadastrosController controle = new UsuariosCadastrosController(view, conexao);
+						UsuariosCadastrosDAO userDAO = new UsuariosCadastrosDAO();
+						List<LoginVO> buscaUsuário = userDAO.buscaUsuarios();
+						view.tabela(buscaUsuário);
+						view.setVisible(true);
+						view.setExtendedState(JFrame.MAXIMIZED_BOTH);
+						}catch(SQLException sqle) {}
 			}
 
 			@Override
@@ -200,9 +206,13 @@ public class TelaADMView extends JFrame {
 					String url = "jdbc:mysql://localhost:3306/BD";
 					Connection conexao = DriverManager.getConnection(url, "root", "root");
 					AcaoRController controle = new AcaoRController(view, conexao);
+					AcaoRDAO acrDAO = new AcaoRDAO();
+					List<GenerosVO> buscaResumo = acrDAO.buscarGeneros();
+					view.tabela(buscaResumo);
 					view.setVisible(true);
 					view.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					}catch(SQLException sqle) {}
+			
 				
 			}
 

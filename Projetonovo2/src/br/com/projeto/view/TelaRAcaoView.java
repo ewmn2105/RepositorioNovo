@@ -33,6 +33,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.event.DocumentListener;
 
+import br.com.projeto.controller.AcaoRController;
 import br.com.projeto.model.vo.GenerosVO;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
@@ -112,104 +113,21 @@ public class TelaRAcaoView extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount()==1) {
+					try {
 					int linha = table.getSelectedRow();
 					String Email = (String) table.getValueAt(linha, 0);
 					String Título = (String) table.getValueAt(linha, 1);
 					String Resumo = (String) table.getValueAt(linha, 2);
 					String Classificação = (String) table.getValueAt(linha, 3);
-					exibir(Email, Título, Resumo, Classificação);
+					String url = "jdbc:mysql://localhost:3306/BD";
+					TelaLeituraView view = new TelaLeituraView(Título, Resumo);
+					Connection conexao = DriverManager.getConnection(url, "root", "root");
+					view.setVisible(true);
+	       			}catch(SQLException SQLe) {}
 				}
 				
-			}          
-			public void exibir(String Email, String Título, String Resumo, String Classificação) {
-				final JFrame frame = new JFrame("Visualização");
-				frame.getContentPane().setBackground(new Color(230, 228, 242));
-				frame.setBounds(487, 185, 744, 571);
-				frame.getContentPane().setLayout(null);
-				
-				JScrollPane pane1 = new JScrollPane((Component) null);
-				pane1.setBounds(69, 159, 590, 365);
-				frame.getContentPane().add(pane1);
-				
-				JTextArea textArea = new JTextArea();
-				textArea.setText(Resumo);
-				textArea.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
-				textArea.setLineWrap(true);
-				pane1.setViewportView(textArea);
-				
-				JLabel sair2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Sair.png"));
-				sair2.setBounds(590, 8, 130, 113);
-				frame.getContentPane().add(sair2);
-				
-				JPanel panel_1 = new JPanel();
-				panel_1.setBackground(new Color(255, 128, 64));
-				panel_1.setBounds(0, 131, 1540, 2);
-				frame.getContentPane().add(panel_1);
-				
-				frame.setResizable(false);
-				
-				sair2.addMouseListener(new MouseListener() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						frame.setVisible(false);
-					}
-
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-				});
-				
-				frame.setVisible(true);
-				
-				
 			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
 		});
-		
 		
 		btnLogin.setBackground(Color.BLUE);
 		btnLogin.setForeground(Color.WHITE);
@@ -230,31 +148,12 @@ public class TelaRAcaoView extends JFrame {
 		getContentPane().add(panel_1);
 
 		txtAutor = new JTextField();
-		txtAutor.setText("Autor (Seu e-mail)");
 		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
 		txtAutor.setForeground(Color.LIGHT_GRAY);
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
 		txtAutor.setBounds(600, 140, 238, 50);
 		getContentPane().add(txtAutor);
-		
-		txtAutor.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent g) {
-				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
-					txtAutor.setText("");
-					txtAutor.setForeground(Color.black);
-				}
-
-			}
-
-			public void focusLost(FocusEvent e) {
-				if (txtAutor.getText().isEmpty()) {
-					txtAutor.setText("Autor (Seu e-mail)");
-					txtAutor.setForeground(Color.LIGHT_GRAY);
-				}
-			}
-		});
-
 
 		JLabel lblNewLabel_1 = new JLabel("Leia os seus resumos:");
 		lblNewLabel_1.setFont(new Font("Segoe UI Variable", Font.PLAIN, 27));
@@ -268,22 +167,6 @@ public class TelaRAcaoView extends JFrame {
 		JLabel l1_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\LogoJO.png"));
 		l1_1.setBounds(102, 267, 234, 213);
 		getContentPane().add(l1_1);
-		txtAutor.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent g) {
-				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
-					txtAutor.setText("");
-					txtAutor.setForeground(Color.black);
-				}
-
-			}
-
-			public void focusLost(FocusEvent e) {
-				if (txtAutor.getText().isEmpty()) {
-					txtAutor.setText("Autor (Seu e-mail)");
-					txtAutor.setForeground(Color.LIGHT_GRAY);
-				}
-			}
-		});
 
 		sair.addMouseListener(new MouseListener() {
 			@Override

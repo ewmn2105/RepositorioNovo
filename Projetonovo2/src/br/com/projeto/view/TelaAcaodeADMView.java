@@ -34,7 +34,7 @@ public class TelaAcaodeADMView extends JFrame {
 		
 		exclusao = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
 		exclusao.setToolTipText("Pesquisar Resumo");
-		exclusao.setBounds(565, 310, 100, 102);
+		exclusao.setBounds(565, 266, 100, 102);
 		getContentPane().add(exclusao);
 		
 		JScrollPane pane1 = new JScrollPane((Component) null);
@@ -49,6 +49,38 @@ public class TelaAcaodeADMView extends JFrame {
 		JLabel sair2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Sair.png"));
 		sair2.setBounds(590, 8, 130, 113);
 		getContentPane().add(sair2);
+		sair2.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 128, 64));
@@ -72,11 +104,6 @@ public class TelaAcaodeADMView extends JFrame {
 		textArea_1_1.setText(senha);
 		textArea_1_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
 		pane1_1_1.setViewportView(textArea_1_1);
-		
-		JLabel edição = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\novopencil.png"));
-		edição.setToolTipText("Pesquisar Resumo");
-		edição.setBounds(565, 197, 100, 102);
-		getContentPane().add(edição);
 		
 		JLabel lblNewLabel = new JLabel("E-mail");
 		lblNewLabel.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));

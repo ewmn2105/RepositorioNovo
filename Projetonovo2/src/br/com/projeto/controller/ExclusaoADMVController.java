@@ -37,14 +37,15 @@ public class ExclusaoADMVController {
 	          	 boolean removidoUsuario = admBO.removeLogin(removeLogin);
 	          	 boolean removidoResumo = admBO.removeLogin2(removeLogin2);
 	          	 if (removidoUsuario == true && removidoResumo == true) {
-	          		view.mensagem("Sua conta foi removida.\nAgora, o aplicativo será fechado");
-	          		view.mensagem("Foi bom ter você conosco");
-	          		System.exit(0);
+	          		view.mensagem("Conta Removida");
+	          		
 	          	 	 
 	          	 } else if (removidoUsuario == false && removidoResumo == false){
-	          		 view.mensagemErro("O e-mail informado não está de acordo com os registros");
-	          	}
-			}
+	          		 view.mensagemErro("Erro ao remover conta");
+	          	}else if (removidoUsuario == true && removidoResumo == false);
+	          	view.mensagem("Conta Removida");
+          		
+		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {

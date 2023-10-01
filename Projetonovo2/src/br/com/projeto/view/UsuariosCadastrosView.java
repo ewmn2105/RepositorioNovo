@@ -129,112 +129,6 @@ public class UsuariosCadastrosView extends JFrame {
 				}
 				
 			}   
-			public void exibir(String nome, String senha, String email) {
-				JFrame frame = new JFrame("Visualização");
-				frame.getContentPane().setBackground(new Color(230, 228, 242));
-				frame.setBounds(487, 185, 744, 571);
-				frame.getContentPane().setLayout(null);
-				
-				JScrollPane pane1 = new JScrollPane((Component) null);
-				pane1.setBounds(206, 194, 296, 49);
-				frame.getContentPane().add(pane1);
-				
-				JTextArea textArea = new JTextArea();
-				textArea.setText(email);
-				textArea.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
-				pane1.setViewportView(textArea);
-				
-				JLabel sair2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\Sair.png"));
-				sair2.setBounds(590, 8, 130, 113);
-				frame.getContentPane().add(sair2);
-				
-				JPanel panel_1 = new JPanel();
-				panel_1.setBackground(new Color(255, 128, 64));
-				panel_1.setBounds(0, 131, 1540, 2);
-				frame.getContentPane().add(panel_1);
-				
-				JScrollPane pane1_1 = new JScrollPane((Component) null);
-				pane1_1.setBounds(206, 289, 296, 49);
-				frame.getContentPane().add(pane1_1);
-				
-				JTextArea textArea_1 = new JTextArea();
-				textArea_1.setText(nome);
-				textArea_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
-				pane1_1.setViewportView(textArea_1);
-				
-				JScrollPane pane1_1_1 = new JScrollPane((Component) null);
-				pane1_1_1.setBounds(206, 383, 296, 49);
-				frame.getContentPane().add(pane1_1_1);
-				
-				JTextArea textArea_1_1 = new JTextArea();
-				textArea_1_1.setText(senha);
-				textArea_1_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
-				pane1_1_1.setViewportView(textArea_1_1);
-				
-				JLabel edição = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\novopencil.png"));
-				edição.setToolTipText("Pesquisar Resumo");
-				edição.setBounds(565, 197, 100, 102);
-				frame.getContentPane().add(edição);
-				
-				exclusao = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
-				exclusao.setToolTipText("Pesquisar Resumo");
-				exclusao.setBounds(565, 310, 100, 102);
-				frame.getContentPane().add(exclusao);
-				
-				
-				
-				JLabel lblNewLabel = new JLabel("E-mail");
-				lblNewLabel.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
-				lblNewLabel.setBounds(332, 171, 54, 21);
-				frame.getContentPane().add(lblNewLabel);
-				
-				JLabel lblNome = new JLabel("Nome");
-				lblNome.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
-				lblNome.setBounds(332, 266, 54, 13);
-				frame.getContentPane().add(lblNome);
-				
-				JLabel lblSenha = new JLabel("Senha");
-				lblSenha.setFont(new Font("Segoe UI Variable", Font.PLAIN, 17));
-				lblSenha.setBounds(332, 360, 54, 13);
-				frame.getContentPane().add(lblSenha);
-				
-				frame.setVisible(true);
-				
-				
-				sair2.addMouseListener(new MouseListener() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						
-
-					}
-
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-				});
-				
-			}
-			
 		});
 		btnLogin.setBackground(Color.BLUE);
 		btnLogin.setForeground(Color.WHITE);
@@ -264,7 +158,6 @@ public class UsuariosCadastrosView extends JFrame {
 		getContentPane().add(l1);
 		
 		txtAutor = new JTextField();
-		//txtAutor.setText("Autor (Seu e-mail)");
 		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
 		txtAutor.setForeground(Color.LIGHT_GRAY);
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
@@ -276,23 +169,6 @@ public class UsuariosCadastrosView extends JFrame {
 		l1_1.setBounds(509, 122, 90, 90);
 		getContentPane().add(l1_1);
 		
-		/*txtAutor.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent g) {
-				if (txtAutor.getText().equals("Autor (Seu e-mail)")) {
-					txtAutor.setText("");
-					txtAutor.setForeground(Color.black);
-				}
-
-			}
-
-			public void focusLost(FocusEvent e) {
-				if (txtAutor.getText().isEmpty()) {
-					txtAutor.setText("Autor (Seu e-mail)");
-					txtAutor.setForeground(Color.LIGHT_GRAY);
-				}
-			}
-		});*/
-
 		sair.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
