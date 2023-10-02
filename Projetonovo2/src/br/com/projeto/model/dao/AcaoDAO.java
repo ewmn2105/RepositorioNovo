@@ -53,7 +53,7 @@ public class AcaoDAO {
 			statement.setString(1, inserirAcao.getAutor());
 			statement.setString(2, inserirAcao.getTitulo());
 			statement.setString(3, inserirAcao.getTexto());
-			statement.setString(4, inserirAcao.getId());
+			statement.setString(4, inserirAcao.getClassificao());
 			int rowsAffected = statement.executeUpdate();
 	            return rowsAffected > 0;
 	        } catch (SQLException e) {

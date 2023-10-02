@@ -48,7 +48,7 @@ public class LoginView extends JFrame {
 	public void inicializaComponentes() {
 		setBounds(487, 185, 585, 571);
 		setTitle("Read7");
-		getContentPane().setBackground(new Color(153, 153, 255));
+		getContentPane().setBackground(new Color(247, 157, 51));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		nome = new JTextField("Login");
