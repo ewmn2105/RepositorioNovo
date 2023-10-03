@@ -28,6 +28,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -56,6 +57,7 @@ public class TelaRAcaoView extends JFrame {
 	private JLabel l1;
 	private DefaultTableModel tableModel;
 	private JTable table;
+	private JPanel panel_2;
 
 	public TelaRAcaoView() {
 		inicializaComponentes();
@@ -153,6 +155,8 @@ public class TelaRAcaoView extends JFrame {
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
 		txtAutor.setBounds(600, 140, 238, 50);
+		txtAutor.setOpaque(false);
+		txtAutor.setBorder(BorderFactory.createEmptyBorder());
 		getContentPane().add(txtAutor);
 
 		JLabel lblNewLabel_1 = new JLabel("Leia os seus resumos:");
@@ -167,6 +171,11 @@ public class TelaRAcaoView extends JFrame {
 		JLabel l1_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\LogoJO.png"));
 		l1_1.setBounds(102, 267, 234, 213);
 		getContentPane().add(l1_1);
+		
+		panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255, 128, 0));
+		panel_2.setBounds(600, 186, 237, 4);
+		getContentPane().add(panel_2);
 
 		sair.addMouseListener(new MouseListener() {
 			@Override

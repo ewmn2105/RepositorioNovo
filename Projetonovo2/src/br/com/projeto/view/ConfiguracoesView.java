@@ -33,7 +33,7 @@ public class ConfiguracoesView extends JFrame{
 			this.nome = nome;
 			this.login = login;
 			JLabel lblNewLabel = new JLabel("Configurações");
-			lblNewLabel.setForeground(new Color(255, 128, 64));
+			lblNewLabel.setForeground(new Color(0, 0, 0));
 			lblNewLabel.setFont(new Font("Segoe UI Variable", Font.PLAIN, 19));
 			lblNewLabel.setBounds(294, 113, 238, 63);
 			getContentPane().add(lblNewLabel);
@@ -51,8 +51,8 @@ public class ConfiguracoesView extends JFrame{
 			lblLogo = new JLabel(logo);
 			sair2 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo\\Imagens\\Sair.png"));
 			log = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo\\Imagens\\read.png"));
-			del = new JLabel(excluir);
-			pencil = new JLabel(lápis);
+			del = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
+			pencil = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\novopencil.png"));
 			getContentPane().setLayout(null);
 
 			JPanel panel_4 = new JPanel();
@@ -82,8 +82,8 @@ public class ConfiguracoesView extends JFrame{
 			sair2.setToolTipText("Sair");
 			lblLogo.setBounds(186, 105, 93, 71);
 			log.setBounds(196, 189, 206, 183);
-			del.setBounds(50, 214, 63, 83);
-			pencil.setBounds(50, 321, 63, 83);
+			del.setBounds(47, 213, 76, 83);
+			pencil.setBounds(47, 321, 76, 83);
 		     
 			Font fontetip = new Font("Segoe UI Variable", Font.BOLD, 17);
 			UIManager.put("ToolTip.font", fontetip);

@@ -48,6 +48,13 @@ public class TelaLeituraView extends JFrame {
 		textArea_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 17));
 		textArea_1.setBounds(69, 45, 252, 57);
 		getContentPane().add(textArea_1);
+		
+		textArea_1.setOpaque(false);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 128, 0));
+		panel.setBounds(69, 75, 252, 5);
+		getContentPane().add(panel);
 
 		setResizable(false);
 

@@ -28,6 +28,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -59,6 +60,7 @@ public class UsuariosCadastrosView extends JFrame {
 	private JTable table;
 	private JTextField txtAutor;
 	private JLabel exclusao;
+	private JPanel panel_2;
 
 	public UsuariosCadastrosView() {
 		inicializaComponentes();
@@ -163,11 +165,18 @@ public class UsuariosCadastrosView extends JFrame {
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
 		txtAutor.setBounds(609, 142, 238, 50);
+		txtAutor.setOpaque(false);
+		txtAutor.setBorder(BorderFactory.createEmptyBorder());
 		getContentPane().add(txtAutor);
 		
 		JLabel l1_1 = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\loupe-et-icone-de-recherche-de-c.png"));
 		l1_1.setBounds(509, 122, 90, 90);
 		getContentPane().add(l1_1);
+		
+		panel_2 = new JPanel();
+		panel_2.setBackground(new Color(255, 128, 0));
+		panel_2.setBounds(610, 188, 237, 4);
+		getContentPane().add(panel_2);
 		
 		sair.addMouseListener(new MouseListener() {
 			@Override

@@ -14,4 +14,8 @@ public class LembrarSenhaBO {
 	public boolean alterarSenha (LembrarSenhaVO alter) {
 		return lembraDAO.alterarSenha(alter);
 	}
+	
+	public boolean alterarSenha2(LembrarSenhaVO alter2) {
+		return lembraDAO.alterarSenha2(alter2);
+	}
 }

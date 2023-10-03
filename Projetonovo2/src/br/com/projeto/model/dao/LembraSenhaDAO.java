@@ -22,7 +22,19 @@ public class LembraSenhaDAO {
 			statement.setString(1, lembraVO.getNome());
 			statement.setString(2, lembraVO.getSenha());
 			statement.setString(3, lembraVO.getEmail());
-			int retorno = statement.executeUpdate();
+			int retorno = statement.executeUpdate(); 
+			return retorno > 0;
+	        } catch (SQLException e) {
+	            return false;
+	        }
+	}
+	public boolean alterarSenha2 (LembrarSenhaVO lembraVO) {
+		try{
+			conexao = DriverManager.getConnection (url, "root", "root");
+			String sql = "UPDATE Resumos SET email = ?";
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			statement.setString(1, lembraVO.getEmail());
+			int retorno = statement.executeUpdate(); 
 			return retorno > 0;
 	        } catch (SQLException e) {
 	            return false;
