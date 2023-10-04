@@ -2,6 +2,7 @@ package br.com.projeto.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import br.com.projeto.view.*;

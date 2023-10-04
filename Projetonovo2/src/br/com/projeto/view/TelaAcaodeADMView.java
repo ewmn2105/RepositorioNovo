@@ -18,8 +18,8 @@ public class TelaAcaodeADMView extends JFrame {
 	private String nome;
 	private String senha;
 	private String email;
-	private JLabel exclusao;
-	private JTextArea textArea;
+	private JLabel exclusao, edicao;
+	private JTextArea textArea, textArea_1, textArea_1_1;
 	
 	public TelaAcaodeADMView(String nome, String senha, String email) {
 		this.nome = nome;
@@ -34,8 +34,13 @@ public class TelaAcaodeADMView extends JFrame {
 		
 		exclusao = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\1530578.png"));
 		exclusao.setToolTipText("Pesquisar Resumo");
-		exclusao.setBounds(565, 266, 100, 102);
+		exclusao.setBounds(565, 314, 100, 102);
 		getContentPane().add(exclusao);
+		
+		edicao = new JLabel(new ImageIcon("C:\\Users\\pwneg\\OneDrive\\Área de Trabalho\\MVC\\Projetonovo2\\Imagens\\novopencil.png"));
+		edicao.setToolTipText("Pesquisar Resumo");
+		edicao.setBounds(565, 207, 100, 102);
+		getContentPane().add(edicao);
 		
 		JScrollPane pane1 = new JScrollPane((Component) null);
 		pane1.setBounds(206, 194, 296, 49);
@@ -91,7 +96,7 @@ public class TelaAcaodeADMView extends JFrame {
 		pane1_1.setBounds(206, 289, 296, 49);
 		getContentPane().add(pane1_1);
 		
-		JTextArea textArea_1 = new JTextArea();
+	    textArea_1 = new JTextArea();
 		textArea_1.setText(nome);
 		textArea_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
 		pane1_1.setViewportView(textArea_1);
@@ -100,7 +105,7 @@ public class TelaAcaodeADMView extends JFrame {
 		pane1_1_1.setBounds(206, 383, 296, 49);
 		getContentPane().add(pane1_1_1);
 		
-		JTextArea textArea_1_1 = new JTextArea();
+		textArea_1_1 = new JTextArea();
 		textArea_1_1.setText(senha);
 		textArea_1_1.setFont(new Font("Segoe UI Variable", Font.BOLD, 20));
 		pane1_1_1.setViewportView(textArea_1_1);
@@ -122,11 +127,20 @@ public class TelaAcaodeADMView extends JFrame {
 		
 		setVisible(true);		
 	}
+	 public void editar(MouseListener listener) {
+		edicao.addMouseListener(listener);
+	}
 	public void excluir(MouseListener listener) {
 		exclusao.addMouseListener(listener);
 	}
 	public String getEmail() {
 		return textArea.getText();
+	}
+	public String getNome() {
+		return textArea_1.getText();
+	}
+	public String getSenha() {
+		return textArea_1_1.getText();
 	}
 	public void mensagem(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);

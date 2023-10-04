@@ -46,6 +46,7 @@ public class LoginView extends JFrame {
 	}
 
 	public void inicializaComponentes() {
+		
 		setBounds(487, 185, 585, 571);
 		setTitle("Read7");
 		getContentPane().setBackground(new Color(247, 157, 51));

@@ -38,6 +38,7 @@ import javax.swing.event.DocumentListener;
 import br.com.projeto.model.vo.GenerosVO;
 import br.com.projeto.model.vo.LoginVO;
 import br.com.projeto.controller.ExclusaoADMVController;
+import br.com.projeto.controller.EdicaoADMController;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
@@ -126,6 +127,7 @@ public class UsuariosCadastrosView extends JFrame {
 					String url = "jdbc:mysql://localhost:3306/BD";
 					Connection conexao = DriverManager.getConnection (url, "root", "root");
 					ExclusaoADMVController control = new ExclusaoADMVController(view, conexao);
+					EdicaoADMController control2 = new EdicaoADMController(view, conexao);
 					view.setVisible(true);
 					}catch(SQLException sqle) {}
 				}
@@ -161,7 +163,7 @@ public class UsuariosCadastrosView extends JFrame {
 		
 		txtAutor = new JTextField();
 		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
-		txtAutor.setForeground(Color.LIGHT_GRAY);
+		txtAutor.setForeground(new Color(0, 0, 0));
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
 		txtAutor.setBounds(609, 142, 238, 50);

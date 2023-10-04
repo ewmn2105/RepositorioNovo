@@ -151,7 +151,7 @@ public class TelaRAcaoView extends JFrame {
 
 		txtAutor = new JTextField();
 		txtAutor.setHorizontalAlignment(SwingConstants.LEFT);
-		txtAutor.setForeground(Color.LIGHT_GRAY);
+		txtAutor.setForeground(new Color(0, 0, 0));
 		txtAutor.setFont(new Font("Segoe UI Variable", Font.PLAIN, 15));
 		txtAutor.setColumns(10);
 		txtAutor.setBounds(600, 140, 238, 50);
@@ -159,7 +159,7 @@ public class TelaRAcaoView extends JFrame {
 		txtAutor.setBorder(BorderFactory.createEmptyBorder());
 		getContentPane().add(txtAutor);
 
-		JLabel lblNewLabel_1 = new JLabel("Leia os seus resumos:");
+		JLabel lblNewLabel_1 = new JLabel("Resumos");
 		lblNewLabel_1.setFont(new Font("Segoe UI Variable", Font.PLAIN, 27));
 		lblNewLabel_1.setBounds(430, 10, 519, 90);
 		getContentPane().add(lblNewLabel_1);
